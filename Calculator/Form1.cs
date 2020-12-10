@@ -18,11 +18,13 @@ namespace Calculator
         }
         public double first_number;
         public double second_number;
+        public double result;
         public int operators;
-        public char operation;
         public string input;
+        public string operation;
         public void Display(string dsp)
         {
+            
             Displaybox.Text += dsp;
             input += dsp;
         }
@@ -31,9 +33,12 @@ namespace Calculator
         {
             Displaybox.Text = "";
         }
-        public void calculate(string calcinput)
+        public void Basic_operator(char operationparameter)
         {
-         
+            first_number = Convert.ToDouble(Displaybox.Text);
+            Display(operationparameter.ToString());
+            input="";
+            operation = operationparameter.ToString();
         }
 
         private void button_0_Click(object sender, EventArgs e)
@@ -93,32 +98,51 @@ namespace Calculator
 
         private void button_add_Click(object sender, EventArgs e)
         {
-            first_number = Convert.ToDouble(Displaybox.Text);
-            Display("+");
-            operation= '+';
+           Basic_operator('+');
         }
 
         private void button_sub_Click(object sender, EventArgs e)
         {
-            Display("-");
-            operation = '-';
+            Basic_operator('-');
         }
 
         private void button_mult_Click(object sender, EventArgs e)
         {
-            Display("x");
-            operation = 'x';
+           Basic_operator('x');
         }
 
         private void button_div_Click(object sender, EventArgs e)
         {
-            Display("÷");
-            operation = '÷';
+            Basic_operator('÷');
         }
 
         private void button_equal_Click(object sender, EventArgs e)
         {
+
             Clear();
+            second_number =Convert.ToDouble(input);
+            switch(operation)
+            {
+                case "+":
+                    result = first_number+second_number;
+                break;
+                case "-":
+                    result = first_number-second_number;
+                break;
+                case "x":
+                    result = first_number*second_number;
+                break;
+                case "÷":
+                    if(second_number!=0)
+                    {
+                       result = first_number/second_number;
+                    }
+                    else Display("Anton.A moment");
+                    
+                break;
+                    
+            }
+            Display(result.ToString());
             
         }
     }
