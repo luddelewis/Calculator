@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{9760F18A-C3E6-4CC6-9B2F-FFEDED3DFAED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{DF79645F-53C7-4EFB-B0EF-44AAE61FB66B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9760F18A-C3E6-4CC6-9B2F-FFEDED3DFAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9760F18A-C3E6-4CC6-9B2F-FFEDED3DFAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9760F18A-C3E6-4CC6-9B2F-FFEDED3DFAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9760F18A-C3E6-4CC6-9B2F-FFEDED3DFAED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF79645F-53C7-4EFB-B0EF-44AAE61FB66B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF79645F-53C7-4EFB-B0EF-44AAE61FB66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF79645F-53C7-4EFB-B0EF-44AAE61FB66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF79645F-53C7-4EFB-B0EF-44AAE61FB66B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
