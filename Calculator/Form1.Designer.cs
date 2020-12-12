@@ -52,7 +52,6 @@
             this.button_comma = new System.Windows.Forms.Button();
             this.button_0 = new System.Windows.Forms.Button();
             this.Displaybox = new System.Windows.Forms.TextBox();
-            this.Topdisplay = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_root
@@ -340,24 +339,12 @@
             this.Displaybox.Text = "0";
             this.Displaybox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // Topdisplay
-            // 
-            this.Topdisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F);
-            this.Topdisplay.Location = new System.Drawing.Point(13, 8);
-            this.Topdisplay.Margin = new System.Windows.Forms.Padding(2);
-            this.Topdisplay.Name = "Topdisplay";
-            this.Topdisplay.ReadOnly = true;
-            this.Topdisplay.Size = new System.Drawing.Size(195, 48);
-            this.Topdisplay.TabIndex = 50;
-            this.Topdisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(223, 300);
             this.Controls.Add(this.Displaybox);
-            this.Controls.Add(this.Topdisplay);
             this.Controls.Add(this.button_root);
             this.Controls.Add(this.button_negative);
             this.Controls.Add(this.button_clear);
@@ -381,11 +368,13 @@
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.button_comma);
             this.Controls.Add(this.button_0);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(239, 339);
             this.MinimumSize = new System.Drawing.Size(239, 339);
             this.Name = "Calculator";
             this.Text = "Calculator";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,7 +405,6 @@
         private System.Windows.Forms.Button button_comma;
         private System.Windows.Forms.Button button_0;
         private System.Windows.Forms.TextBox Displaybox;
-        private System.Windows.Forms.TextBox Topdisplay;
     }
 }
 

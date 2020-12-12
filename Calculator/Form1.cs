@@ -10,20 +10,34 @@ namespace Calculator
             InitializeComponent();
         }
         public bool firstEntry = true;
+        public bool multipleOperation;
+        public int stable = 1;
         public double firstNumber;
         public double secondNumber;
         public string result;
         public string btnPressed = "0";
-        public string memory = "0";
+        public string memory = "";
         public string operation;
         public string lastDisplay = "0";
         public int numberOfOperations;
+        
         public void Display(string dsp)
         {
             firstEntry = false;
-            Displaybox.Text += dsp;
-            memory += dsp;
+            if (stable==1)
+            {
+                Displaybox.Text += dsp;
+            }
+            else if (stable==0)
+            {
+                Displaybox.Text = dsp;
+            }      
+            if(double.TryParse(dsp, out _))
+            {
+                memory += dsp;
+            }
             lastDisplay = dsp;
+            stable = 1;
 
         }
         public void Clear()
@@ -31,9 +45,10 @@ namespace Calculator
             Displaybox.Text = "0";
             lastDisplay = "0";
             btnPressed = "0";
-            memory = "0";
+            memory = "";
             numberOfOperations = 0;
             firstEntry = true;
+            operation = "";
         }
         public void TwoTermOperator(double firstNumberParameter)
         {
@@ -60,7 +75,13 @@ namespace Calculator
                     else Display("Anton.A moment");
                     break;
             }
-            Display(result);
+            if (multipleOperation)
+            {
+                multipleOperation = false;
+                stable = 0;
+
+            }
+            Displaybox.Text = result;
             memory = result;
         }
         private void Button_Click(object sender, EventArgs e)
@@ -91,11 +112,19 @@ namespace Calculator
                     numberOfOperations++;
                     if (numberOfOperations == 2)
                     {
+                        multipleOperation = true;
                         TwoTermOperator(firstNumber);
                         numberOfOperations--;
+                        firstNumber = double.Parse(memory);
+                        stable = 2;
+
                     }
-                    firstNumber = double.Parse(memory);
-                    Display(btnPressed);
+                    else
+                    {
+                        firstNumber = double.Parse(memory);
+                        stable = 0;
+                    }
+
                     operation = btnPressed;
                     memory = "";
                     break;
@@ -108,6 +137,17 @@ namespace Calculator
             }
               
         }
-        
+        private void Calculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch ((int)e.KeyValue)
+            {
+                case int n when (n >= 48 && n <= 57):
+                    btnPressed = ((int)e.KeyValue - 48).ToString();
+                    break;
+                case int n when (n >= 96 && n <= 105):
+                    btnPressed = ((int)e.KeyValue - 96).ToString();
+                    break;
+            }
+        }
     }
 }
