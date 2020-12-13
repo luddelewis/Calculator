@@ -61,9 +61,11 @@
             this.button_root.Margin = new System.Windows.Forms.Padding(2);
             this.button_root.Name = "button_root";
             this.button_root.Size = new System.Drawing.Size(33, 32);
-            this.button_root.TabIndex = 48;
+            this.button_root.TabIndex = 0;
+            this.button_root.TabStop = false;
             this.button_root.Text = "√";
             this.button_root.UseVisualStyleBackColor = true;
+            this.button_root.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_negative
             // 
@@ -72,9 +74,11 @@
             this.button_negative.Margin = new System.Windows.Forms.Padding(2);
             this.button_negative.Name = "button_negative";
             this.button_negative.Size = new System.Drawing.Size(33, 32);
-            this.button_negative.TabIndex = 47;
+            this.button_negative.TabIndex = 0;
+            this.button_negative.TabStop = false;
             this.button_negative.Text = "±";
             this.button_negative.UseVisualStyleBackColor = true;
+            this.button_negative.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_clear
             // 
@@ -83,10 +87,11 @@
             this.button_clear.Margin = new System.Windows.Forms.Padding(2);
             this.button_clear.Name = "button_clear";
             this.button_clear.Size = new System.Drawing.Size(33, 32);
-            this.button_clear.TabIndex = 46;
+            this.button_clear.TabIndex = 0;
+            this.button_clear.TabStop = false;
             this.button_clear.Text = "C";
             this.button_clear.UseVisualStyleBackColor = true;
-            this.button_clear.Click += new System.EventHandler(this.Button_Click);
+            this.button_clear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_clearentry
             // 
@@ -95,9 +100,11 @@
             this.button_clearentry.Margin = new System.Windows.Forms.Padding(2);
             this.button_clearentry.Name = "button_clearentry";
             this.button_clearentry.Size = new System.Drawing.Size(33, 32);
-            this.button_clearentry.TabIndex = 45;
+            this.button_clearentry.TabIndex = 0;
+            this.button_clearentry.TabStop = false;
             this.button_clearentry.Text = "CE";
             this.button_clearentry.UseVisualStyleBackColor = true;
+            this.button_clearentry.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_back
             // 
@@ -107,9 +114,11 @@
             this.button_back.Margin = new System.Windows.Forms.Padding(2);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(33, 32);
-            this.button_back.TabIndex = 44;
+            this.button_back.TabIndex = 0;
+            this.button_back.TabStop = false;
             this.button_back.Text = "←";
             this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_square
             // 
@@ -119,9 +128,11 @@
             this.button_square.Margin = new System.Windows.Forms.Padding(2);
             this.button_square.Name = "button_square";
             this.button_square.Size = new System.Drawing.Size(33, 32);
-            this.button_square.TabIndex = 43;
+            this.button_square.TabIndex = 0;
+            this.button_square.TabStop = false;
             this.button_square.Text = "x^2";
             this.button_square.UseVisualStyleBackColor = true;
+            this.button_square.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_div
             // 
@@ -131,10 +142,11 @@
             this.button_div.Margin = new System.Windows.Forms.Padding(2);
             this.button_div.Name = "button_div";
             this.button_div.Size = new System.Drawing.Size(33, 32);
-            this.button_div.TabIndex = 42;
+            this.button_div.TabIndex = 0;
+            this.button_div.TabStop = false;
             this.button_div.Text = "÷";
             this.button_div.UseVisualStyleBackColor = true;
-            this.button_div.Click += new System.EventHandler(this.Button_Click);
+            this.button_div.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_9
             // 
@@ -143,10 +155,11 @@
             this.button_9.Margin = new System.Windows.Forms.Padding(2);
             this.button_9.Name = "button_9";
             this.button_9.Size = new System.Drawing.Size(33, 32);
-            this.button_9.TabIndex = 41;
+            this.button_9.TabIndex = 0;
+            this.button_9.TabStop = false;
             this.button_9.Text = "9";
             this.button_9.UseVisualStyleBackColor = true;
-            this.button_9.Click += new System.EventHandler(this.Button_Click);
+            this.button_9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_8
             // 
@@ -155,10 +168,11 @@
             this.button_8.Margin = new System.Windows.Forms.Padding(2);
             this.button_8.Name = "button_8";
             this.button_8.Size = new System.Drawing.Size(33, 32);
-            this.button_8.TabIndex = 40;
+            this.button_8.TabIndex = 0;
+            this.button_8.TabStop = false;
             this.button_8.Text = "8";
             this.button_8.UseVisualStyleBackColor = true;
-            this.button_8.Click += new System.EventHandler(this.Button_Click);
+            this.button_8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_7
             // 
@@ -167,10 +181,11 @@
             this.button_7.Margin = new System.Windows.Forms.Padding(2);
             this.button_7.Name = "button_7";
             this.button_7.Size = new System.Drawing.Size(33, 32);
-            this.button_7.TabIndex = 39;
+            this.button_7.TabIndex = 0;
+            this.button_7.TabStop = false;
             this.button_7.Text = "7";
             this.button_7.UseVisualStyleBackColor = true;
-            this.button_7.Click += new System.EventHandler(this.Button_Click);
+            this.button_7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_inverse
             // 
@@ -179,9 +194,11 @@
             this.button_inverse.Margin = new System.Windows.Forms.Padding(2);
             this.button_inverse.Name = "button_inverse";
             this.button_inverse.Size = new System.Drawing.Size(33, 32);
-            this.button_inverse.TabIndex = 38;
+            this.button_inverse.TabIndex = 0;
+            this.button_inverse.TabStop = false;
             this.button_inverse.Text = "1/x";
             this.button_inverse.UseVisualStyleBackColor = true;
+            this.button_inverse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_mult
             // 
@@ -190,10 +207,11 @@
             this.button_mult.Margin = new System.Windows.Forms.Padding(2);
             this.button_mult.Name = "button_mult";
             this.button_mult.Size = new System.Drawing.Size(33, 32);
-            this.button_mult.TabIndex = 37;
+            this.button_mult.TabIndex = 0;
+            this.button_mult.TabStop = false;
             this.button_mult.Text = "x";
             this.button_mult.UseVisualStyleBackColor = true;
-            this.button_mult.Click += new System.EventHandler(this.Button_Click);
+            this.button_mult.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_6
             // 
@@ -202,10 +220,11 @@
             this.button_6.Margin = new System.Windows.Forms.Padding(2);
             this.button_6.Name = "button_6";
             this.button_6.Size = new System.Drawing.Size(33, 32);
-            this.button_6.TabIndex = 36;
+            this.button_6.TabIndex = 0;
+            this.button_6.TabStop = false;
             this.button_6.Text = "6";
             this.button_6.UseVisualStyleBackColor = true;
-            this.button_6.Click += new System.EventHandler(this.Button_Click);
+            this.button_6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_5
             // 
@@ -214,10 +233,11 @@
             this.button_5.Margin = new System.Windows.Forms.Padding(2);
             this.button_5.Name = "button_5";
             this.button_5.Size = new System.Drawing.Size(33, 32);
-            this.button_5.TabIndex = 35;
+            this.button_5.TabIndex = 0;
+            this.button_5.TabStop = false;
             this.button_5.Text = "5";
             this.button_5.UseVisualStyleBackColor = true;
-            this.button_5.Click += new System.EventHandler(this.Button_Click);
+            this.button_5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_4
             // 
@@ -226,10 +246,11 @@
             this.button_4.Margin = new System.Windows.Forms.Padding(2);
             this.button_4.Name = "button_4";
             this.button_4.Size = new System.Drawing.Size(33, 32);
-            this.button_4.TabIndex = 34;
+            this.button_4.TabIndex = 0;
+            this.button_4.TabStop = false;
             this.button_4.Text = "4";
             this.button_4.UseVisualStyleBackColor = true;
-            this.button_4.Click += new System.EventHandler(this.Button_Click);
+            this.button_4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_sub
             // 
@@ -238,10 +259,11 @@
             this.button_sub.Margin = new System.Windows.Forms.Padding(2);
             this.button_sub.Name = "button_sub";
             this.button_sub.Size = new System.Drawing.Size(33, 32);
-            this.button_sub.TabIndex = 33;
+            this.button_sub.TabIndex = 0;
+            this.button_sub.TabStop = false;
             this.button_sub.Text = "-";
             this.button_sub.UseVisualStyleBackColor = true;
-            this.button_sub.Click += new System.EventHandler(this.Button_Click);
+            this.button_sub.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_3
             // 
@@ -250,10 +272,11 @@
             this.button_3.Margin = new System.Windows.Forms.Padding(2);
             this.button_3.Name = "button_3";
             this.button_3.Size = new System.Drawing.Size(33, 32);
-            this.button_3.TabIndex = 32;
+            this.button_3.TabIndex = 0;
+            this.button_3.TabStop = false;
             this.button_3.Text = "3";
             this.button_3.UseVisualStyleBackColor = true;
-            this.button_3.Click += new System.EventHandler(this.Button_Click);
+            this.button_3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_2
             // 
@@ -262,10 +285,11 @@
             this.button_2.Margin = new System.Windows.Forms.Padding(2);
             this.button_2.Name = "button_2";
             this.button_2.Size = new System.Drawing.Size(33, 32);
-            this.button_2.TabIndex = 31;
+            this.button_2.TabIndex = 0;
+            this.button_2.TabStop = false;
             this.button_2.Text = "2";
             this.button_2.UseVisualStyleBackColor = true;
-            this.button_2.Click += new System.EventHandler(this.Button_Click);
+            this.button_2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_1
             // 
@@ -274,10 +298,11 @@
             this.button_1.Margin = new System.Windows.Forms.Padding(2);
             this.button_1.Name = "button_1";
             this.button_1.Size = new System.Drawing.Size(33, 32);
-            this.button_1.TabIndex = 30;
+            this.button_1.TabIndex = 0;
+            this.button_1.TabStop = false;
             this.button_1.Text = "1";
             this.button_1.UseVisualStyleBackColor = true;
-            this.button_1.Click += new System.EventHandler(this.Button_Click);
+            this.button_1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_equal
             // 
@@ -286,10 +311,11 @@
             this.button_equal.Margin = new System.Windows.Forms.Padding(2);
             this.button_equal.Name = "button_equal";
             this.button_equal.Size = new System.Drawing.Size(33, 69);
-            this.button_equal.TabIndex = 29;
+            this.button_equal.TabIndex = 0;
+            this.button_equal.TabStop = false;
             this.button_equal.Text = "=";
             this.button_equal.UseVisualStyleBackColor = true;
-            this.button_equal.Click += new System.EventHandler(this.Button_Click);
+            this.button_equal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_add
             // 
@@ -298,10 +324,11 @@
             this.button_add.Margin = new System.Windows.Forms.Padding(2);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(33, 32);
-            this.button_add.TabIndex = 28;
+            this.button_add.TabIndex = 0;
+            this.button_add.TabStop = false;
             this.button_add.Text = "+";
             this.button_add.UseVisualStyleBackColor = true;
-            this.button_add.Click += new System.EventHandler(this.Button_Click);
+            this.button_add.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_comma
             // 
@@ -310,10 +337,11 @@
             this.button_comma.Margin = new System.Windows.Forms.Padding(2);
             this.button_comma.Name = "button_comma";
             this.button_comma.Size = new System.Drawing.Size(33, 32);
-            this.button_comma.TabIndex = 27;
+            this.button_comma.TabIndex = 0;
+            this.button_comma.TabStop = false;
             this.button_comma.Text = ",";
             this.button_comma.UseVisualStyleBackColor = true;
-            this.button_comma.Click += new System.EventHandler(this.Button_Click);
+            this.button_comma.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // button_0
             // 
@@ -322,10 +350,11 @@
             this.button_0.Margin = new System.Windows.Forms.Padding(2);
             this.button_0.Name = "button_0";
             this.button_0.Size = new System.Drawing.Size(73, 32);
-            this.button_0.TabIndex = 26;
+            this.button_0.TabIndex = 0;
+            this.button_0.TabStop = false;
             this.button_0.Text = "0";
             this.button_0.UseVisualStyleBackColor = true;
-            this.button_0.Click += new System.EventHandler(this.Button_Click);
+            this.button_0.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 
             // Displaybox
             // 
@@ -335,7 +364,8 @@
             this.Displaybox.Name = "Displaybox";
             this.Displaybox.ReadOnly = true;
             this.Displaybox.Size = new System.Drawing.Size(195, 48);
-            this.Displaybox.TabIndex = 49;
+            this.Displaybox.TabIndex = 0;
+            this.Displaybox.TabStop = false;
             this.Displaybox.Text = "0";
             this.Displaybox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
