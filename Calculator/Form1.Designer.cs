@@ -203,13 +203,17 @@
             // button_mult
             // 
             this.button_mult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_mult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.button_mult.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button_mult.Location = new System.Drawing.Point(133, 175);
             this.button_mult.Margin = new System.Windows.Forms.Padding(2);
             this.button_mult.Name = "button_mult";
+            this.button_mult.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.button_mult.Size = new System.Drawing.Size(33, 32);
             this.button_mult.TabIndex = 0;
             this.button_mult.TabStop = false;
-            this.button_mult.Text = "x";
+            this.button_mult.Text = "*";
+            this.button_mult.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button_mult.UseVisualStyleBackColor = true;
             this.button_mult.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_Click);
             // 

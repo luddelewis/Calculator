@@ -9,39 +9,38 @@ namespace Calculator
         {
             InitializeComponent();
         }
-
         public bool firstEntry = true;
-        public bool multipleOperation;
         public int inputMode = 1;
         public double firstNumber;
         public double secondNumber;
         public string result;
         public string btnPressed = "0";
         public string memory = "0";
-        public string operation;
+        public string twoTermOperation;
+        public string singleTermOperation;
         public string lastDisplay = "0";
         public int numberOfOperations;
-
+        //Function for displaying the inputed numbers
         private void Display(string dsp)
         {
             firstEntry = false;
-            if (inputMode == 1)
+            if (inputMode == 1)// For when the input should be added to whats displaying
             {
                 Displaybox.Text += dsp;
                 inputMode = 1;
             }
-            else if (inputMode == 0)
+            else if (inputMode == 0)//For when the only the input should be displayed. ex. after a twotermoperator is inputted.
             {
                 Displaybox.Text = dsp;
                 inputMode = 1;
             }
-            if (double.TryParse(dsp, out _) || dsp == ",")
+            if (double.TryParse(dsp, out _) || dsp == ",")//If the input is a number or a comma it gets added to memory
             {
                 memory += dsp;
             }
             lastDisplay = dsp;
-
         }
+        //Function for resetting the program gets run whenever C button is pressed
         private void Clear()
         {
             Displaybox.Text = "0";
@@ -50,15 +49,19 @@ namespace Calculator
             memory = "0";
             numberOfOperations = 0;
             firstEntry = true;
-            operation = "";
+            twoTermOperation = "";
             inputMode = 1;
         }
+        //Function for calculating the value of a two term operation
         private void TwoTermOperator(double firstNumberParameter)
         {
+            if (lastDisplay != "=")
+            {
+                secondNumber = double.Parse(memory);
+            }
+           
 
-            secondNumber = double.Parse(memory);
-            Displaybox.Text = "";
-            switch (operation)
+            switch (twoTermOperation)
             {
                 case "+":
                     result = ((firstNumberParameter + secondNumber).ToString());
@@ -67,7 +70,7 @@ namespace Calculator
                 case "-":
                     result = ((firstNumberParameter - secondNumber).ToString());
                     break;
-                case "x":
+                case "*":
                     result = ((firstNumberParameter * secondNumber).ToString());
                     break;
                 case "÷":
@@ -75,42 +78,49 @@ namespace Calculator
                     {
                         result = ((firstNumberParameter / secondNumber).ToString());
                     }
-                    else Display("Anton.A moment");
+                    else Display("Anton.A moment");// Internskämt då Anton har dividerat med noll ett flertal gånger
                     break;
-
+                case "":
+                    result = Displaybox.Text;
+                    break;
             }
-            if (multipleOperation)
-            {
-                multipleOperation = false;
-                inputMode = 0;
-
-            }
-            numberOfOperations = 0;
+            
+            firstNumber = double.Parse(result);
             memory = result;
             Displaybox.Text = result;
+            lastDisplay = result;
+            numberOfOperations = 1;
+
         }
-        private void SingleTermOperator(double SingleTermParameter)
+        private void SingleTermOperator(double singleTermParameter)
         {
-            switch (operation)
+            switch (singleTermOperation)
             {
                 case "±":
-                    result = (SingleTermParameter * -1).ToString();
+                    result = (singleTermParameter * -1).ToString();
                     break;
                 case "√":
-                    result = (Math.Sqrt(SingleTermParameter)).ToString();
+                    result = (Math.Sqrt(singleTermParameter)).ToString();
                     break;
                 case "x^2":
-                    result = (Math.Pow(SingleTermParameter,2)).ToString();
+                    result = (Math.Pow(singleTermParameter,2)).ToString();
                     break;
                 case "1/x":
-                    result = (1 / SingleTermParameter).ToString();
+                    if (singleTermParameter == 0)
+                    {
+                        result="Anton.A moment";
+                    }
+                    else
+                    {
+                        result = (1 / singleTermParameter).ToString();
+                    }
                     break;
             }
             memory = result;
             Displaybox.Text = result;
-              
         }
-        private void Input_Interpreter(string input)
+        //The InputInterperter runs after each buttons press to determine what to do
+        private void InputInterperter(string input)
         {
             switch (btnPressed)
             {
@@ -133,28 +143,40 @@ namespace Calculator
                         Display(btnPressed);
                     }
                     break;
-                case string n when (n == "+" || n == "-" || n == "x" || n == "÷"):
-                    numberOfOperations++;
-                    if (numberOfOperations == 2)
+                case string n when (n == "+" || n == "-" || n == "*" || n == "÷"):
+                    //if statement to change twotermoperator and prevent crash if two twotermoperations are enterd after eachother
+                    if (lastDisplay == "+" || lastDisplay == "-" || lastDisplay == "*" || lastDisplay == "*")
                     {
-                        multipleOperation = true;
-                        TwoTermOperator(firstNumber);
-                        numberOfOperations--;
-                        firstNumber = double.Parse(memory);
-                        inputMode = 2;
-
+                        twoTermOperation = btnPressed;
                     }
                     else
                     {
-                        firstNumber = double.Parse(memory);
-                        inputMode = 0;
+                        numberOfOperations++;
+                        // if statement for when more than one twotermoperator inputted ex. 5+5+,
+                        if (numberOfOperations == 2)
+                        {
+                            //calculates the first two numbers and changes the firstnumber to the result
+                            TwoTermOperator(firstNumber);
+                            twoTermOperation = btnPressed;
+                            inputMode = 2;
+                            firstNumber = double.Parse(memory);
+                        }
+                        else
+                        {
+                            //else for when there is only one two term operator
+                            firstNumber = double.Parse(memory);
+                            inputMode = 0;
+                        }
+                        twoTermOperation = btnPressed;
+                        memory = "";
+                        lastDisplay = btnPressed;
                     }
-
-                    operation = btnPressed;
-                    memory = "0";
                     break;
                 case "=":
+                    numberOfOperations = 0;
                     TwoTermOperator(firstNumber);
+                    lastDisplay = "=";
+                    numberOfOperations = 0;
                     break;
                 case "C":
                     Clear();
@@ -195,18 +217,21 @@ namespace Calculator
                     firstEntry = true;
                     break;
                 case string n when (n == "±" ||n== "√"||n== "x^2"||n== "1/x"):
-                    operation = btnPressed;
+                    singleTermOperation = btnPressed;
                     SingleTermOperator(double.Parse(memory));
+
                     break;
             }
         }
+        //Whenever a button is clicked its text gets saved to btnpressed and InputInterperter is run
         private void Button_Click(object sender, EventArgs e)
         {
             btnPressed = ((Button)sender).Text;
-            Input_Interpreter(btnPressed);
+            InputInterperter(btnPressed);
 
 
         }
+        //Whenever a keyboard key is pressed the corresponding input is fed to the program. Translates the keyvalue to the corresponding Btnpress value
         private void Calculator_KeyDown(object sender, KeyEventArgs e)
         {
             switch ((int)e.KeyValue)
@@ -224,7 +249,7 @@ namespace Calculator
                     btnPressed = "-";
                     break;
                 case 106:
-                    btnPressed = "x";
+                    btnPressed = "*";
                     break;
                 case 111:
                     btnPressed = "÷";
@@ -241,10 +266,8 @@ namespace Calculator
 
 
             }
-            Input_Interpreter(btnPressed);
+            InputInterperter(btnPressed);
 
         }
-
-
     }
 }
