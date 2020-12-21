@@ -10,16 +10,16 @@ namespace Calculator
             InitializeComponent();
         }
         public bool firstEntry = true;
-        public int inputMode = 1;
-        public double firstNumber;
-        public double secondNumber;
-        public string result;
-        public string btnPressed = "0";
-        public string memory = "0";
-        public string twoTermOperation;
-        public string singleTermOperation;
-        public string lastDisplay = "0";
-        public int numberOfOperations;
+        public int inputMode = 1;//Specifies which inputmode to use
+        public double firstNumber; //Used to store the first number for use in operations
+        public double secondNumber;//Used to store the second number for use in operations
+        public string result;// Used to store result of operations
+        public string btnPressed = "0";// Input variable, used to store which button was last pressed
+        public string memory = "0";//Used to store enterd. ex when + is pressed memory gets saved as furst number and then gets cleared, when = is pressed memory is stored as second number and cleared
+        public string twoTermOperation;//Used to specify which twotermoperator is currently being used ex +
+        public string singleTermOperation;//Used to specify which singletermoperator is currently being used ex x^2
+        public string lastDisplay = "0"; //Used to store the last displayed character
+        public int numberOfOperations;//Counter for how many twotermoperators have been enterd
         //Function for displaying the inputed numbers
         private void Display(string dsp)
         {
@@ -34,6 +34,7 @@ namespace Calculator
                 Displaybox.Text = dsp;
                 inputMode = 1;
             }
+            //NOTE: inputMode=2 is used when the display should not be changed ex. during a twotermoperation
             if (double.TryParse(dsp, out _) || dsp == ",")//If the input is a number or a comma it gets added to memory
             {
                 memory += dsp;
@@ -55,13 +56,14 @@ namespace Calculator
         //Function for calculating the value of a two term operation
         private void TwoTermOperator(double firstNumberParameter)
         {
+            //If statement to make sure repeated "=" works properly
             if (lastDisplay != "=")
             {
                 secondNumber = double.Parse(memory);
             }
            
 
-            switch (twoTermOperation)
+            switch (twoTermOperation)//Just calculates the result
             {
                 case "+":
                     result = ((firstNumberParameter + secondNumber).ToString());
@@ -78,20 +80,23 @@ namespace Calculator
                     {
                         result = ((firstNumberParameter / secondNumber).ToString());
                     }
-                    else Display("Anton.A moment");// Internskämt då Anton har dividerat med noll ett flertal gånger
+                    else result="Anton ERR";// Internskämt då Anton har dividerat med noll ett flertal gånger
                     break;
                 case "":
                     result = Displaybox.Text;
                     break;
             }
-            
-            firstNumber = double.Parse(result);
             memory = result;
-            Displaybox.Text = result;
-            lastDisplay = result;
+            if(memory!="Anton ERR")
+            {
+                firstNumber = double.Parse(memory);
+                lastDisplay = memory;
+            }
+            Displaybox.Text = memory;
             numberOfOperations = 1;
 
         }
+        //Funciton for calculating singletermoperations
         private void SingleTermOperator(double singleTermParameter)
         {
             switch (singleTermOperation)
@@ -108,7 +113,7 @@ namespace Calculator
                 case "1/x":
                     if (singleTermParameter == 0)
                     {
-                        result="Anton.A moment";
+                        result="Anton ERR";
                     }
                     else
                     {
@@ -117,7 +122,19 @@ namespace Calculator
                     break;
             }
             memory = result;
-            Displaybox.Text = result;
+            if (result == "Anton ERR")
+            {
+                Displaybox.Text = result;
+            }
+            else
+            {
+                memory = result;
+                lastDisplay = memory;
+                Displaybox.Text = memory;
+
+            }
+            
+         
         }
         //The InputInterperter runs after each buttons press to determine what to do
         private void InputInterperter(string input)
@@ -179,9 +196,10 @@ namespace Calculator
                     numberOfOperations = 0;
                     break;
                 case "C":
-                    Clear();
+                    Clear();//Resets Program
                     break;
                 case "←":
+                    //Removes last characterf from memory and displaybox.text
                     if (double.TryParse(memory, out _) || lastDisplay == "," && inputMode == 1)
                     {
                         memory = memory.Substring(0, memory.Length - 1);
@@ -199,6 +217,7 @@ namespace Calculator
                     }
                     break;
                 case "CE":
+                    //Clears the current enterd number
                     if (double.TryParse(memory, out _) || lastDisplay == "," && inputMode == 1)
                     {
                         memory = "0";
@@ -234,7 +253,7 @@ namespace Calculator
         //Whenever a keyboard key is pressed the corresponding input is fed to the program. Translates the keyvalue to the corresponding Btnpress value
         private void Calculator_KeyDown(object sender, KeyEventArgs e)
         {
-            switch ((int)e.KeyValue)
+            switch ((int)e.KeyValue)//Translates keyvalues to btnpresses
             {
                 case int n when (n >= 48 && n <= 57):
                     btnPressed = ((int)e.KeyValue - 48).ToString();
@@ -262,6 +281,12 @@ namespace Calculator
                     break;
                 case 110:
                     btnPressed = ",";
+                    break;
+                case 8:
+                    btnPressed = "←";
+                    break;
+                case 46:
+                    btnPressed = "C";
                     break;
 
 
