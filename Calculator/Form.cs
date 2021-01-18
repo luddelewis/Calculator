@@ -61,9 +61,9 @@ namespace Calculator
             {
                 secondNumber = double.Parse(memory);
             }
-           
 
-            switch (twoTermOperation)//Just calculates the result
+            //Just calculates the result
+            switch (twoTermOperation)
             {
                 case "+":
                     result = ((firstNumberParameter + secondNumber).ToString());
