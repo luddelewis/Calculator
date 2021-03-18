@@ -199,7 +199,7 @@ namespace Calculator
                     Clear();//Resets Program
                     break;
                 case "←":
-                    //Removes last characterf from memory and displaybox.text
+                    //Removes last character from memory and displaybox.text
                     if (double.TryParse(memory, out _) || lastDisplay == "," && inputMode == 1)
                     {
                         memory = memory.Substring(0, memory.Length - 1);
